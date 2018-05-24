@@ -9,7 +9,7 @@ import(
 )
 
 const (
-	Token string = "NDQ5MjkxMjI3MDQ5ODg1NzE2.DeiilQ.-DvaA5zhuAystd9fkMKN-t-l-n8"
+	Token string = ""
 )
 
 func main() {
