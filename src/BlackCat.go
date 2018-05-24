@@ -8,7 +8,9 @@ import(
 	"syscall"
 )
 
-const Token string = ""
+const (
+	Token string = "NDQ5MjkxMjI3MDQ5ODg1NzE2.DeiilQ.-DvaA5zhuAystd9fkMKN-t-l-n8"
+)
 
 func main() {
 	log.Println("Starting BlackCat...")
