@@ -12,3 +12,14 @@ $ git clone git://www.github.com/superbizonsdevelopment/blackcat.git
 $ cd blackcat
 $ go build BlackCat.go
 ```
+
+# Configuration
+
+Config file - config.json
+
+```
+{
+	"Token": "your's bot token",
+	"Prefix": "!"
+}
+```
