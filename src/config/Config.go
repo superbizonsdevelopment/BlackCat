@@ -35,9 +35,29 @@ func LoadConfig() error {
 			return err
 		}
 		
+		_, err = configFile.WriteString(
+	`{
+	"Token": "",
+	"Prefix": ""
+}`)
+		
+		if err != nil {
+			log.Println(err.Error())
+			return err
+		}
+		
+		err = configFile.Sync()
+		
+		if err != nil {
+			log.Println(err.Error())
+			return err
+		}
+		
 		defer configFile.Close()
 		
-		return err
+		log.Println("Done")
+		
+		return nil
 	}
 	
 	log.Println(string(configFile))
