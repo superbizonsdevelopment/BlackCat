@@ -6,12 +6,12 @@ import(
 	"log"
 )
 
-var {
+var (
 	Token string
 	Prefix string
 	
 	config *Configuration
-}
+)
 
 type Configuration struct {
 	Token string `json:"Token"`
@@ -25,12 +25,12 @@ func LoadConfig() error {
 	
 	if err != nil {
 		log.Println(err.Error())
-		return
+		return err
 	}
 	
 	log.Println(string(file))
 	
-	err := json.Unmarshal(file, &config)
+	err = json.Unmarshal(file, &config)
 	
 	if err != nil {
 		log.Println(err.Error())
@@ -39,4 +39,6 @@ func LoadConfig() error {
 	
 	Token = config.Token
 	Prefix = config.Prefix
+	
+	return nil
 }

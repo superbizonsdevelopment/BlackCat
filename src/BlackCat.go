@@ -6,14 +6,26 @@ import(
 	"os"
 	"os/signal"
 	"syscall"
+	"./config"
 )
 
-const (
-	Token string = ""
+var (
+	Token string
+	Prefix string
 )
 
 func main() {
 	log.Println("Starting BlackCat...")
+	
+	err := config.LoadConfig()
+	
+	if err != nil {
+		log.Println(err.Error())
+		return
+	}
+	
+	Token := config.Token
+	Prefix := config.Prefix
 	
 	discord, err := discordgo.New("Bot " + Token)
 	
@@ -32,6 +44,7 @@ func main() {
 	}
 	
 	log.Println("Bot is working!")
+	log.Println("Prefix:", Prefix)
 	
 	sc := make(chan os.Signal, 1)
 	signal.Notify(sc, syscall.SIGINT, syscall.SIGTERM, os.Interrupt, os.Kill)
