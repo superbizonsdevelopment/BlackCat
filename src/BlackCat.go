@@ -14,43 +14,13 @@ import(
 var (
 	Token string
 	Prefix string
-	Commands = make(map[string]command.Command)
-	HelpCommand = command.Command{Name: "help", Description: "hehe", MinArgs: 0, MaxArgs: 0, Permission: 0}
-	CommandList = []command.Command {
-		command.Command {
-			Name: "!help",
-			Description: "help command description",
-			MinArgs: 0,
-			MaxArgs: 0,
-			Permission: 0,
-		},
-		command.Command {
-			Name: "!avatar",
-			Description: "avatar command description",
-			MinArgs: 0,
-			MaxArgs: 0,
-			Permission: 0,
-		},
-	}
 )
 
-func RegisterCommands() {
-	for _, cmd := range CommandList{
-		Commands[cmd.Name] = command.Command {
-			cmd.Name,
-			cmd.Description,
-			cmd.MinArgs,
-			cmd.MaxArgs,
-			cmd.Permission,
-		}
-	}
-}
-
 func main() {
-	RegisterCommands()
+	command.RegisterCommands()
 	log.Println("Starting BlackCat...")
 	
-	for _, cmd := range Commands {
+	for _, cmd := range command.Commands {
 		log.Println("Register new command:", cmd.Name)
 	}
 	
@@ -98,8 +68,8 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 			return
 		}
 		
-		if m.Content == Commands[m.Content].Name {
-			s.ChannelMessageSend(m.ChannelID, Commands[m.Content].Description)
+		if m.Content == command.Commands[m.Content].Name {
+			s.ChannelMessageSend(m.ChannelID, command.Commands[m.Content].Description)
 		}
 	
 	}
