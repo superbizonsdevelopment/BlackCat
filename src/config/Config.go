@@ -4,6 +4,7 @@ import(
 	"encoding/json"
 	"io/ioutil"
 	"log"
+	"os"
 )
 
 var (
@@ -21,16 +22,27 @@ type Configuration struct {
 func LoadConfig() error {
 	log.Println("Reading from config file...")
 	
-	file, err := ioutil.ReadFile("./config.json")
+	configFile, err := ioutil.ReadFile("./config.json")
+
 	
 	if err != nil {
 		log.Println(err.Error())
+		
+		configFile, err := os.Create("./config.json")
+		
+		if err != nil {
+			log.Println(err.Error())
+			return err
+		}
+		
+		defer configFile.Close()
+		
 		return err
 	}
 	
-	log.Println(string(file))
+	log.Println(string(configFile))
 	
-	err = json.Unmarshal(file, &config)
+	err = json.Unmarshal(configFile, &config)
 	
 	if err != nil {
 		log.Println(err.Error())
