@@ -4,6 +4,16 @@
 
 BlackCat - Bot for SuperbizonsDevelopment team discord server.
 
+# How To Run Without Building
+
+Open terminal
+
+```
+$ git clone git://www.github.com/superbizonsdevelopment/blackcat.git
+$ cd blackcat
+$ go run BlackCat.go
+```
+
 # How To Build
 
 To build our project, look at the following steps
