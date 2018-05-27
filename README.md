@@ -15,7 +15,7 @@ Config file - config.json
 }
 ```
 
-# How To Clone
+# How To Clone Repository
 
 ```
 $ git clone git://www.github.com/superbizonsdevelopment/blackcat.git
